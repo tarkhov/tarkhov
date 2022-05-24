@@ -1,1 +1,1 @@
-![Slava Ukarini](/assets/img/ukraine.png)
+![Slava Ukraini!](/assets/img/ukraine.png)
