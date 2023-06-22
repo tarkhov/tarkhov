@@ -1,4 +1,4 @@
-# 💫 About Me:
+# 🇺🇦 About Me
 Libertarian, full-stack web application developer with 10+ years of experience specializing in the development of progressive web apps, websites and mobile applications such as apache cordova and electron using Node.js, Nest.js, Express.js, Vue.js, Angular.js, Laravel, MySQL, PostgreSQL, Redis, Ionic Framework, CSS3, SASS, Docker, Amazon AWS, GCP, also open source enthusiast with a dozen repositories using: npm, composer and debian packages.
 
 ### CV
