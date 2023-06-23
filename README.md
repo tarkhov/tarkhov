@@ -4,7 +4,7 @@ Libertarian, full-stack web application developer with 10+ years of experience s
 ### CV
 https://docs.google.com/document/d/1ii2q-tkPjnqepcUNTpbEXIlImjujffBfBZZq4W-Z9lk/edit?usp=sharing
 
-## Exclusive Features 
+## :rocket: Exclusive Features 
 Send me an email at agtuks@gmail.com for details and pricing.
 
 ### Project time and cost audit  
