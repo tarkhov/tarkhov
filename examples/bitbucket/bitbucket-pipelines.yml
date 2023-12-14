@@ -1,0 +1,19 @@
+image: atlassian/default-image:3
+
+pipelines:
+  branches:
+    dev:
+      - step:
+          script:
+            - pipe: atlassian/rsync-deploy:0.11.0
+              variables:
+                USER: $HOST_USER
+                SERVER: $HOST_SERVER
+                REMOTE_PATH: '${HOST_DIR}/html/'
+                LOCAL_PATH: '${BITBUCKET_CLONE_DIR}/'
+                EXTRA_ARGS: "--exclude-from=rsync-exclude"
+            - pipe: atlassian/ssh-run:0.7.1
+              variables:
+                SSH_USER: $HOST_USER
+                SERVER: $HOST_SERVER
+                COMMAND: 'cd ${HOST_DIR}/html && find . -type d -print0 | xargs -0 chmod 755 && find . -type f -print0 | xargs -0 chmod 644 && ${PHP_PATH}/php ${COMPOSER_PATH}/composer install'
