@@ -27,34 +27,20 @@ function build_url(array $parts): string {
     return $url;
 }
 
-function set_query_param(string $name, string | int $value, ?string $url = null): string {
-    if ($url === null) {
-        $url = $_SERVER['REQUEST_URI'];
-        if (!$url) {
-            throw new Exception('Url not found.');
-        }
-    }
-
+function set_query_params(array $values, string $url): string {
     $parts = parse_url($url);
     $params = [];
     if (isset($parts['query'])) {
         parse_str($parts['query'], $params);
     }
 
-    $params[$name] = $value;
+    $params = array_merge($params, $values);
     $parts['query'] = http_build_query($params);
 
     return build_url($parts);
 }
 
-function remove_query_param(string | array $name, ?string $url = null): string {
-    if ($url === null) {
-        $url = $_SERVER['REQUEST_URI'];
-        if (!$url) {
-            throw new Exception('Url not found.');
-        }
-    }
-
+function remove_query_params(string | array $name, string $url): string {
     $parts = parse_url($url);
     if (!isset($parts['query'])) {
         throw new Exception('Query not found.');
@@ -63,7 +49,7 @@ function remove_query_param(string | array $name, ?string $url = null): string {
 
     if (is_array($name)) {
         if (empty(array_intersect($name, array_keys($params)))) {
-            throw new Exception("Params not found.");
+            throw new Exception('Any params not found.');
         }
 
         foreach ($name as $param) {
@@ -87,3 +73,7 @@ function remove_query_param(string | array $name, ?string $url = null): string {
 
     return build_url($parts);
 }
+
+$url= set_query_params(['a' => 'b', 'c' => 'd', 'e' => 'f'], 'https://example.com');
+echo "$url\n";
+echo remove_query_params(['a', 'c'], $url) . "\n";

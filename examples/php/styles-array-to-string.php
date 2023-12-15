@@ -12,18 +12,18 @@ function addStyles(string $html, array $styles, string $tag = 'p', int $limit = 
 echo addStyles(
     '<p>Example text.</p><p>Second paragraph.</p>',
     [
-        'color'       => '#222222',
+        'color'       => '#000000',
         'font-size'   => '16px',
-        'line-height' => '150%'
+        'line-height' => '120%'
     ]
-);
+) . "\n";
 
 // add only 1 tag styles
 echo addStyles(
     '<p>Example text.</p><p>Second paragraph.</p>',
     [
-        'color'       => '#222222',
+        'color'       => '#000000',
         'font-size'   => '16px',
-        'line-height' => '150%'
+        'line-height' => '120%'
     ], 'p', 1
-);
+) . "\n";
