@@ -1,10 +1,14 @@
 <?php
-function addStyles(string $html, array $styles, string $tag = 'p', int $limit = -1): string {
-    $htmlStyles = join(';', array_map(
-        fn($key, $value): string => "$key: $value", // clone array with new format
-        array_keys($styles), // style names
-        str_replace(';', '', array_values($styles)) // style values with removing ; in the end
+function multi_join(array | string $separator = '', array $array, string $format = '%s %s'): string {
+    return join($separator, array_map(
+        fn($key, $value): string => sprintf($format, $key, $value),
+        array_keys($array),
+        array_values($array)
     ));
+}
+
+function addStyles(string $html, array $styles, string $tag = 'p', int $limit = -1): string {
+    $htmlStyles = multi_join(';', $styles, '%s: %s;');
     return preg_replace("/<$tag>/", "<$tag style=\"$htmlStyles\">", $html, $limit); // set limit to 1 for replacing only first tag
 }
 
