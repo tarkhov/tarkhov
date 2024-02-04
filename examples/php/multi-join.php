@@ -1,5 +1,5 @@
 <?php
-function multi_join(array | string $separator = '', array $array, string $format = '%s %s'): string {
+function multi_join(string $separator = '', array $array, string $format = '%s %s'): string {
     return join($separator, array_map(
         fn($key, $value): string => sprintf($format, $key, $value),
         array_keys($array),
